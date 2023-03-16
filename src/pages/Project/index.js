@@ -7,7 +7,7 @@ import {
   ContainerService,
   ContainerServiceCard,
   ContainerServices,
-  Cust,
+  Cost,
   Description,
   Header,
   Infos,
@@ -20,20 +20,22 @@ import {
   Strong,
   Title,
   TitleService,
+  ButtonDelete,
 } from "./styles";
 import loading from "../../assets/imgs/loading.svg";
 import Messege from "../../components/Messege";
+import { FaTrash } from "react-icons/fa";
 
 export default function Project() {
   const [project, setProject] = useState({});
   const [services, setServices] = useState([]);
   const [name, setName] = useState("");
-  const [cust, setCust] = useState("");
+  const [cost, setCost] = useState(0);
   const [description, setDescription] = useState("");
   const [messegeVisible, setMessegeVisible] = useState(false);
-  const [messege, setMessege] = useState("");
-  const [type, setType] = useState("");
+  const [messege, setMessege] = useState({});
   const [serviceVisible, setServiceVisible] = useState(false);
+  let [idService, setIdService] = useState(0);
 
   const { id } = useParams();
 
@@ -52,31 +54,48 @@ export default function Project() {
     fetchData();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    project.services.push({ name, cust, description });
-
+  const patchProject = async () => {
     try {
       await fetch(`http://localhost:5001/projects/${id}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(project),
       });
-      setMessegeVisible(true);
-      setType("sucess");
-      setMessege("Serviço adicionado com sucesso");
-      setCust("");
-      setName("");
-      setDescription("");
-      setServiceVisible(false);
     } catch (error) {
       console.log(error);
     }
   };
-  const handleServiceVisible = (e) => {
-    setServiceVisible(!serviceVisible);
+  const handleSubmit = async (e, msg) => {
+    if (e) e.preventDefault();
+
+    if (project.cost + cost > project.budget) {
+      setMessege({
+        name: "Orçamento ultrapassado, verifique o valor do serviço!",
+        type: "error",
+      });
+      return;
+    }
+
+    const lastElementId = services[services.length - 1]?.id;
+    idService += lastElementId ? lastElementId + 1 : 1;
+
+    project.cost += cost;
+    project.services.push({ name, cost, description, id: idService });
+
+    patchProject();
+    setMessegeVisible(true);
+    setMessege({ name: "Serviço adicionado com sucesso", type: "sucess" });
+    setCost(0);
+    setName("");
+    setDescription("");
+    setServiceVisible(false);
   };
 
+  const deleteService = async (_idService) => {
+    services.splice(_idService - 1, 1);
+    setServices(services)
+    patchProject();
+  };
   return (
     <Main>
       {!project.id && <img src={loading} />}
@@ -86,7 +105,6 @@ export default function Project() {
             <Messege
               visible={messegeVisible}
               setVisible={setMessegeVisible}
-              type={type}
               msg={messege}
             />
           )}
@@ -111,7 +129,7 @@ export default function Project() {
           <ContainerService>
             <Header>
               <TitleService>Adicione um serviço:</TitleService>
-              <Button onClick={handleServiceVisible}>
+              <Button onClick={() => setServiceVisible(!serviceVisible)}>
                 {serviceVisible ? "Fechar" : "Adicionar serviço"}
               </Button>
             </Header>
@@ -137,8 +155,8 @@ export default function Project() {
                     type="number"
                     placeholder="Insira o valor total"
                     required
-                    onChange={(e) => setCust(e.target.value)}
-                    value={cust}
+                    onChange={(e) => setCost(Number(e.target.value))}
+                    value={cost}
                   />
                 </InputArea>
                 <InputArea>
@@ -157,17 +175,24 @@ export default function Project() {
               </form>
             )}
           </ContainerService>
-          <TitleService>Adicione um serviço:</TitleService>
+          <TitleService>Serviços:</TitleService>
           <ContainerServices>
-            {services.map((service) => (
-              <ContainerServiceCard>
-                <ServiceTitle>{service.name}</ServiceTitle>
-                <Cust>
-                  <ServiceStrong>Custo total:</ServiceStrong>R$ {service.cust}
-                </Cust>
-                <Description>{service.description}</Description>
-              </ContainerServiceCard>
-            ))}
+            {services.length === 0 ? (
+              <p>Não há serviços cadastrados</p>
+            ) : (
+              services.map((service, index) => (
+                <ContainerServiceCard key={index + 1} id={service.id}>
+                  <ServiceTitle>{service.name}</ServiceTitle>
+                  <Cost>
+                    <ServiceStrong>Custo total:</ServiceStrong>R$ {service.cost}
+                  </Cost>
+                  <Description>{service.description}</Description>
+                  <ButtonDelete onClick={() => deleteService(service.id)}>
+                    {<FaTrash />} Excluir
+                  </ButtonDelete>
+                </ContainerServiceCard>
+              ))
+            )}
           </ContainerServices>
         </Container>
       )}

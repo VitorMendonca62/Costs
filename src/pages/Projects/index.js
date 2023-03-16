@@ -12,8 +12,7 @@ import { useEffect, useState } from "react";
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
-  const [messege, setMessege] = useState("");
-  const [type, setType] = useState("");
+  const [messege, setMessege] = useState({});
   const [visible, setVisible] = useState(false);
 
   const location = useLocation();
@@ -33,8 +32,7 @@ export default function Projects() {
     fetchData();
 
     if (location.state) {
-      setMessege(location.state.message);
-      setType(location.state.type);
+      setMessege({ name: location.state.message, type: location.state.type });
     }
   }, []);
 
@@ -44,8 +42,10 @@ export default function Projects() {
         method: "DELETE",
       });
       setProjects(projects.filter((project) => project.id !== id));
-      setMessege("O projeto foi excluido com sucesso");
-      setType("sucess");
+      setMessege({
+        name: "O projeto foi excluido com sucesso",
+        type: "sucess",
+      });
       setVisible(true);
     } catch (error) {
       console.log(error);
@@ -56,12 +56,7 @@ export default function Projects() {
     <Main>
       <Container>
         {messege && (
-          <Messege
-            visible={visible}
-            setVisible={setVisible}
-            type={type}
-            msg={messege}
-          />
+          <Messege visible={visible} setVisible={setVisible} msg={messege} />
         )}
         <Header>
           <Title>Projetos</Title>

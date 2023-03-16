@@ -1,110 +1,31 @@
 {
   "projects": [
     {
-      "name": "dawdawd",
-      "budget": "1",
+      "name": "ddwadwa",
+      "budget": "1221",
       "category": {
-        "id": 2,
-        "name": "Desenvolvimento"
+        "id": 1,
+        "name": "Infra"
       },
-      "cost": 0,
+      "cost": 1221,
       "services": [
         {
-          "name": "adwdawd",
-          "cust": "1221",
-          "description": "wdad"
-        },
-        {
-          "name": "wdadwa",
-          "cust": "12",
-          "description": "wdadad"
-        },
-        {
-          "name": "wadawd",
-          "cust": "1221",
-          "description": "wdadw"
-        },
-        {
           "name": "dawdawd",
-          "cust": "1221",
-          "description": "dwadwa"
-        },
-        {
-          "name": "dawdwa",
-          "cust": "211221",
-          "description": "dawda"
-        },
-        {
-          "name": "wadwdw",
-          "cust": "1212",
-          "description": "\\ad\\ada\\adswadsde nhfsdbhsgvtytsedtfbcvtsgedcbvgsevfcsavcasvcfdcawvsdxcasrwdawrdfawrfdarwfdawrfdawrdfrawdw"
-        },
-        {
-          "name": "wdawdw",
-          "cust": "12121",
-          "description": "wdad"
-        },
-        {
-          "name": "dawdaw",
-          "cust": "212",
-          "description": "wdaawdwa"
-        },
-        {
-          "name": "dawdwad",
-          "cust": "1212",
-          "description": "wadawd"
-        },
-        {
-          "name": "dwadawd",
-          "cust": "122121",
-          "description": "wdawd"
-        },
-        {
-          "name": "dawdawd",
-          "cust": "12121",
-          "description": "dwadawdwa"
-        },
-        {
-          "name": "dawdawd",
-          "cust": "1212",
-          "description": "wadawd"
-        },
-        {
-          "name": "awdawd",
-          "cust": "2112",
-          "description": "wdawd"
-        },
-        {
-          "name": "wdawd",
-          "cust": "12",
-          "description": "awdwad"
-        },
-        {
-          "name": "dawdawda",
-          "cust": "1212",
-          "description": "121212"
-        },
-        {
-          "name": "dawdwa",
-          "cust": "2122",
-          "description": "wdwadaw"
-        },
-        {
-          "name": "dawdawd",
-          "cust": "1212121",
-          "description": "wdawdwad"
+          "cost": 1221,
+          "description": "dawdwa",
+          "id": 1
         }
       ],
       "id": 1
     },
     {
-      "name": "awdawd",
-      "budget": "2112",
+      "budget": "111111111111111111",
+      "name": "11",
       "category": {
-        "id": 4,
-        "name": "Planejamento"
+        "id": 3,
+        "name": "Design"
       },
-      "cost": 0,
+      "cost": 13429868,
       "services": [],
       "id": 2
     }

@@ -48,7 +48,7 @@ export const ContainerService = styled.div`
   padding: 2rem 0;
 `;
 
-export const Header = styled.header`
+export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,7 +152,7 @@ export const ServiceTitle = styled.h3`
   font-weight: bold;
 `;
 
-export const Cust = styled.p`
+export const Cost = styled.p`
   color: #7b7b7b;
   padding: 1.5rem 0;
 `;
@@ -164,4 +164,21 @@ export const ServiceStrong = styled.strong`
 export const Description = styled.p`
   color: #7b7b7b;
   word-wrap: break-word;
+`;
+export const ButtonDelete = styled.button`
+  cursor: pointer;
+  background-color: #efefef;
+  border: 1px solid #7b7b7b;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.5rem;
+  gap: 0.4rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: #222;
+    color: #ffbb33;
+    border-color: transparent;
+  }
 `;

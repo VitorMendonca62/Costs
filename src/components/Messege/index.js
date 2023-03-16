@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { MessegeContainer } from "./styles";
 
-export default function Messege({ type, msg, visible, setVisible }) {
+export default function Messege({ msg, visible, setVisible }) {
   useEffect(() => {
-    if (!msg || !type) {
+    if (!msg.name) {
       setVisible(false);
       return;
     }
@@ -19,8 +19,8 @@ export default function Messege({ type, msg, visible, setVisible }) {
   return (
     <>
       {visible && (
-        <MessegeContainer type={type}>
-          <p>{msg}</p>
+        <MessegeContainer type={msg.type}>
+          <p>{msg.name}</p>
         </MessegeContainer>
       )}
     </>
