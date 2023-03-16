@@ -7,6 +7,7 @@ export const Button = styled.button`
   font-weight: bold;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  border-radius: 1rem;
   &:hover {
     color: #ffbb33;
   }

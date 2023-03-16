@@ -19,8 +19,8 @@ export default function NavBar() {
         <Logo src={ImageLogo} />
         <nav>
           <List>
-            {items.map((item) => (
-              <Item>
+            {items.map((item, index) => (
+              <Item key={index}>
                 <Link to={item.link}>{item.title} </Link>
               </Item>
             ))}

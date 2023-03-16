@@ -22,7 +22,6 @@ export const Mark = styled.span`
 
 export const Description = styled.p`
   color: #7b7b7b;
-  font-size: 0.9rem;
   padding: 2rem 0;
 `;
 

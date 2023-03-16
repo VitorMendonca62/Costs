@@ -6,6 +6,9 @@ import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
 
 import Home from "./pages/Home";
+import NewProject from "./pages/NewProject";
+import Projects from "./pages/Projects";
+import Project from "./pages/Project";
 
 export default function RoutesCosts() {
   return (
@@ -13,11 +16,12 @@ export default function RoutesCosts() {
       <NavBar />
       <Routes>
         <Route path={paths.home} element={<Home />} />
-        {/* <Route path={paths.projects} element={<Projects />} />
-        <Route path={paths.newProjects} element={<NewProjects />} />
-        <Route path={paths.company} element={<Company />} />
-        <Route path={paths.contact} element={<Contact />} />
-        <Route path="*" element={<NotFound />} /> */}
+        <Route path={paths.projects} element={<Projects />} />
+        <Route path={paths.projectsID} element={<Project />} />
+        <Route path={paths.newProject} element={<NewProject />} />
+        {/* <Route path={paths.company} element={<Company />} /> */}
+        {/* <Route path={paths.contact} element={<Contact />} /> */}
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
       <Footer />
     </Router>

@@ -18,8 +18,8 @@ export default function Footer() {
       <div>
         <nav>
           <List>
-            {items.map((item) => (
-              <Item>
+            {items.map((item,index) => (
+              <Item key={index}>
                 <Link to={item.direc}>{item.social}</Link>
               </Item>
             ))}

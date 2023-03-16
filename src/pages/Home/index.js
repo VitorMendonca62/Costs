@@ -3,6 +3,7 @@ import { Description, Image, Main, Mark, Title } from "./styles";
 import ButtonNewProject from "../../components/ButtonNewProject";
 import { paths } from "../../contants/paths";
 import ImageMain from "../../assets/imgs/main-image.svg";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
       <Description>
         Comece a gerenciar os seus projetos agora mesmo!
       </Description>
-      <ButtonNewProject link={paths.newProjects} />
+      <Link to={paths.newProject}>
+        <ButtonNewProject />
+      </Link>
       <Image src={ImageMain} />
     </Main>
   );
