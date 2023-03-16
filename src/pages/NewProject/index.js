@@ -11,7 +11,7 @@ export default function NewProjects() {
 
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
-  const [budget, setBudget] = useState("");
+  const [budget, setBudget] = useState(0);
   const [project, setProject] = useState({});
 
   const handleName = (e) => {

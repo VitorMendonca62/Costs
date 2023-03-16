@@ -1,33 +1,15 @@
 {
   "projects": [
     {
-      "name": "ddwadwa",
-      "budget": "1221",
+      "name": "awdawd",
+      "budget": "121221",
       "category": {
         "id": 1,
         "name": "Infra"
       },
-      "cost": 1221,
-      "services": [
-        {
-          "name": "dawdawd",
-          "cost": 1221,
-          "description": "dawdwa",
-          "id": 1
-        }
-      ],
-      "id": 1
-    },
-    {
-      "budget": "111111111111111111",
-      "name": "11",
-      "category": {
-        "id": 3,
-        "name": "Design"
-      },
-      "cost": 13429868,
+      "cost": 0,
       "services": [],
-      "id": 2
+      "id": 1
     }
   ],
   "categories": [

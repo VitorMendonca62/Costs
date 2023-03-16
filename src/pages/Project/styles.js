@@ -11,6 +11,9 @@ export const Main = styled.main`
 
 export const Container = styled.div`
   width: 60%;
+  & > form {
+    padding: 2rem 0;
+  }
 `;
 
 export const Title = styled.h2`

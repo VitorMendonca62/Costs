@@ -16,7 +16,9 @@ export default function NavBar() {
   return (
     <Header>
       <Container>
-        <Logo src={ImageLogo} />
+        <Link to="/">
+          <Logo src={ImageLogo} />
+        </Link>
         <nav>
           <List>
             {items.map((item, index) => (

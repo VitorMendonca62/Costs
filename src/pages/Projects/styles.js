@@ -7,17 +7,18 @@ export const Main = styled.main`
   flex-direction: column;
   padding: 2rem 0;
   background-color: #efefef;
+  height: 10000075%;
 `;
 
 export const Container = styled.div`
   width: 60%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
 `;
 
-export const Header = styled.header`
+export const Header = styled.div`
   padding-bottom: 2rem;
   display: flex;
   justify-content: space-between;

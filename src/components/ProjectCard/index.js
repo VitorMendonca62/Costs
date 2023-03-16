@@ -9,9 +9,17 @@ import {
 } from "./styles";
 
 import { FaTrash, FaPencilAlt } from "react-icons/fa";
-
-export default function ProjectCard({ name, budget, category, handleDelete, id }) {
+import { useNavigate } from "react-router-dom";
+export default function ProjectCard({
+  name,
+  budget,
+  category,
+  handleDelete,
+  id,
+}) {
   const colorsCategories = ["#ffaebc", "#a0e7e5", "#b4f8c8", "#fbe7c"];
+
+  const history = useNavigate();
 
   function deleteProject() {
     handleDelete(id);
@@ -27,7 +35,9 @@ export default function ProjectCard({ name, budget, category, handleDelete, id }
         {category.name}
       </Category>
       <Buttons>
-        <Button>{<FaPencilAlt />} Editar</Button>
+        <Button onClick={() => history(`${id}`)}>
+          {<FaPencilAlt />} Editar
+        </Button>
         <Button onClick={deleteProject}>{<FaTrash />} Excluir</Button>
       </Buttons>
     </Container>
