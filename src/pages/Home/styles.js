@@ -6,7 +6,7 @@ export const Main = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 7.2rem 0;
+  padding: 6rem 0;
 `;
 
 export const Title = styled.h1`

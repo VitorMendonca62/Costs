@@ -36,7 +36,7 @@ export default function Projects() {
     }
   }, []);
 
-  async function deleteProject(id) {
+  function deleteProject(id) {
     try {
       fetch(`http://localhost:5001/projects/${id}`, {
         method: "DELETE",
@@ -64,7 +64,6 @@ export default function Projects() {
             <ButtonNewProject />
           </Link>
         </Header>
-
         <ContainerProjects>
           {projects.length > 0 &&
             projects.map((item) => (

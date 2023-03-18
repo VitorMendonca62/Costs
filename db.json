@@ -1,12 +1,12 @@
 {
   "projects": [
     {
-      "name": "awdawd",
-      "budget": "121221",
       "category": {
-        "id": 1,
-        "name": "Infra"
+        "id": 2,
+        "name": "Desenvolvimento"
       },
+      "name": "waddaw",
+      "budget": "12121212",
       "cost": 0,
       "services": [],
       "id": 1

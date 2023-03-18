@@ -1,7 +1,14 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import { Container, List, Item, Copyright, Mark } from "./styles";
+import {
+  Container,
+  List,
+  Item,
+  Copyright,
+  Mark,
+  FooterContainer,
+} from "./styles";
 
 export default function Footer() {
   const date = new Date();
@@ -14,11 +21,11 @@ export default function Footer() {
   ];
 
   return (
-    <Container>
-      <div>
+    <FooterContainer>
+      <Container>
         <nav>
           <List>
-            {items.map((item,index) => (
+            {items.map((item, index) => (
               <Item key={index}>
                 <Link to={item.direc}>{item.social}</Link>
               </Item>
@@ -28,7 +35,7 @@ export default function Footer() {
         <Copyright>
           <Mark>Costs</Mark> © {year}
         </Copyright>
-      </div>
-    </Container>
+      </Container>
+    </FooterContainer>
   );
 }

@@ -19,9 +19,6 @@ export default function RoutesCosts() {
         <Route path={paths.projects} element={<Projects />} />
         <Route path={paths.projectsID} element={<Project />} />
         <Route path={paths.newProject} element={<NewProject />} />
-        {/* <Route path={paths.company} element={<Company />} /> */}
-        {/* <Route path={paths.contact} element={<Contact />} /> */}
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
       <Footer />
     </Router>

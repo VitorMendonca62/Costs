@@ -1,9 +1,9 @@
-import { paths } from "../../../contants/paths";
+import ImageLogo from "../../../assets/imgs/logo.png";
 import { Link } from "react-router-dom";
 
-import ImageLogo from "../../../assets/imgs/logo.png";
-
 import { Header, Container, Logo, List, Item } from "./styles";
+
+import { paths } from "../../../contants/paths";
 
 export default function NavBar() {
   const items = [

@@ -7,7 +7,6 @@ export const Main = styled.main`
   flex-direction: column;
   padding: 2rem 0;
   background-color: #efefef;
-  height: 10000075%;
 `;
 
 export const Container = styled.div`

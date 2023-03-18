@@ -11,9 +11,6 @@ import {
   Description,
   Header,
   Infos,
-  Input,
-  InputArea,
-  Label,
   Main,
   ServiceStrong,
   ServiceTitle,
@@ -25,22 +22,25 @@ import {
 import loading from "../../assets/imgs/loading.svg";
 import Messege from "../../components/Messege";
 import { FaTrash } from "react-icons/fa";
+import ProjectForm from "../../components/layout/ProjectForm";
+import ServiceForm from "../../components/ServiceForm";
 
 export default function Project() {
   const [project, setProject] = useState({});
   const [services, setServices] = useState([]);
-  const [nameService, setNameService] = useState("");
-  const [cost, setCost] = useState(0);
-  const [description, setDescription] = useState("");
-  const [messegeVisible, setMessegeVisible] = useState(false);
   const [messege, setMessege] = useState({});
-  const [serviceVisible, setServiceVisible] = useState(false);
-  const [editVisible, setEditVisible] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [name, setName] = useState("");
-  const [budget, setBudget] = useState(0);
 
-  let [idService, setIdService] = useState(0);
+  // States Visilbe
+  const [serviceVisible, setServiceVisible] = useState(false);
+  const [messegeVisible, setMessegeVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
+
+  // Forms project
+  const [name, setName] = useState("");
+  const [budget, setBudget] = useState("");
+
+  let idService = 0;
+  let cost = 0;
 
   const { id } = useParams();
 
@@ -49,25 +49,23 @@ export default function Project() {
       try {
         const response = await fetch(`http://localhost:5001/projects/${id}`);
         const data = await response.json();
+
         setProject(data);
         setServices(data.services);
 
-        const responseCategories = await fetch(
-          "http://localhost:5001/categories"
-        );
-        const dataCategories = await responseCategories.json();
-        setCategories(dataCategories);
+        setName(data.name);
+        setBudget(data.budget);
       } catch (error) {
         console.log(error);
       }
     }
 
     fetchData();
-  }, []);
+  }, [id]);
 
-  const patchProject = async () => {
+  const patchProject = () => {
     try {
-      await fetch(`http://localhost:5001/projects/${id}`, {
+      fetch(`http://localhost:5001/projects/${id}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(project),
@@ -77,22 +75,34 @@ export default function Project() {
     }
   };
 
-  const handleSubmitEditProject = async (e) => {
+  const storeProject = (e) => {
     e.preventDefault();
 
-    project.name = name;
-    project.budget = budget ? budget : project.budget;
+    const response = new FormData(e.currentTarget);
+    const data = { name: response.get("name"), budget: response.get("budget") };
+    storeService();
+
+    for (const attribute in data) {
+      project[attribute] = data[attribute];
+    }
+
     setMessege({
-      name: "Projeto editado com sucesos!",
+      name: "Projeto editado com sucesso!",
       type: "sucess",
     });
 
-    setEditVisible(false)
+    setEditVisible(false);
     patchProject();
   };
 
-  const handleSubmitService = async (e, msg) => {
+  const storeService = (e) => {
     if (e) e.preventDefault();
+
+    const lastElementId = services[services.length - 1]?.id;
+    idService += lastElementId ? lastElementId + 1 : 1;
+
+    const response = new FormData(e.currentTarget);
+    cost = Number(response.get("cost"));
 
     if (project.cost + cost > project.budget) {
       setMessege({
@@ -102,28 +112,24 @@ export default function Project() {
       return;
     }
 
-    const lastElementId = services[services.length - 1]?.id;
-    idService += lastElementId ? lastElementId + 1 : 1;
+    const data = {
+      name: response.get("nameService"),
+      cost,
+      description: response.get("description"),
+      id: idService,
+    };
 
     project.cost += cost;
-    project.services.push({
-      name: nameService,
-      cost,
-      description,
-      id: idService,
-    });
+    project.services.push(data);
 
-    patchProject();
-    setMessege({ name: "Serviço adicionado com sucesso", type: "sucess" });
-    setCost(0);
-    setNameService("");
-    setDescription("");
     setServiceVisible(false);
+    setMessege({ name: "Serviço adicionado com sucesso", type: "sucess" });
+    patchProject();
   };
 
   const deleteService = async (_idService) => {
-    const service = services.splice(_idService - 1, 1);
-    project.cost -= service[0].cost;
+    const service = services.splice(_idService - 1, 1)[0];
+    project.cost -= service?.cost;
     setServices(services);
     patchProject();
 
@@ -133,19 +139,9 @@ export default function Project() {
     });
   };
 
-  const handleSelect = (e) => {
-    setProject({
-      ...project,
-      category: {
-        id: e.target.options.selectedIndex,
-        name: e.target.value,
-      },
-    });
-  };
-
   return (
     <Main>
-      {!project.id && <img src={loading} />}
+      {!project.id && <img src={loading} alt="" />}
       {!!project.id && (
         <Container>
           {messege && (
@@ -163,54 +159,16 @@ export default function Project() {
           </Header>
 
           {editVisible ? (
-            <form onSubmit={handleSubmitEditProject}>
-              <InputArea>
-                <Label htmlFor="name">Nome do Projeto:</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Insira o nome do projeto"
-                  required
-                  onChange={(e) => setName(e.target.value)}
-                  value={name || project.name}
-                />
-              </InputArea>
-              <InputArea>
-                <Label htmlFor="budget">Orçamento do projeto:</Label>
-                <Input
-                  required
-                  id="budget"
-                  name="budget"
-                  type="number"
-                  min={0}
-                  placeholder="Insira o orçamento total"
-                  onChange={(e) => setBudget(e.target.value)}
-                  value={budget || project.budget}
-                />
-              </InputArea>
-              <InputArea>
-                <Label htmlFor="category">Selecione uma categoria:</Label>
-                <select
-                  required
-                  name="category"
-                  id="category"
-                  onChange={handleSelect}
-                  value={project.category?.name}
-                >
-                  <option>Selecione uma opção</option>
-                  {categories.map((category, index) => (
-                    <option
-                      key={index}
-                      value={category.name}
-                    >
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-              </InputArea>
-              <Button type="submit">Concluir edição</Button>
-            </form>
+            <ProjectForm
+              handleSubmit={storeProject}
+              setProject={setProject}
+              project={project}
+              name={name}
+              setName={setName}
+              budget={budget}
+              setBudget={setBudget}
+              category={project.category}
+            />
           ) : (
             <ContainerInfos>
               <Infos>
@@ -235,47 +193,7 @@ export default function Project() {
                 {serviceVisible ? "Fechar" : "Adicionar serviço"}
               </Button>
             </Header>
-            {serviceVisible && (
-              <form onSubmit={handleSubmitService}>
-                <InputArea>
-                  <Label htmlFor="nameService">Nome do serviço:</Label>
-                  <Input
-                    id="nameService"
-                    name="nameService"
-                    type="text"
-                    placeholder="Insira o nome do serviço"
-                    required
-                    onChange={(e) => setNameService(e.target.value)}
-                    value={nameService}
-                  />
-                </InputArea>
-                <InputArea>
-                  <Label htmlFor="cost">Custo do serviço:</Label>
-                  <Input
-                    id="cost"
-                    name="cost"
-                    type="number"
-                    placeholder="Insira o valor total"
-                    required
-                    onChange={(e) => setCost(Number(e.target.value))}
-                    value={cost}
-                  />
-                </InputArea>
-                <InputArea>
-                  <Label htmlFor="description">Descrição do projeto:</Label>
-                  <Input
-                    id="description"
-                    name="description"
-                    type="text"
-                    placeholder="Descreva o serviço"
-                    required
-                    onChange={(e) => setDescription(e.target.value)}
-                    value={description}
-                  />
-                </InputArea>
-                <Button type="submit">Adicionar serviço</Button>
-              </form>
-            )}
+            {serviceVisible && <ServiceForm handleSubmit={storeService} />}
           </ContainerService>
           <TitleService>Serviços:</TitleService>
           <ContainerServices>

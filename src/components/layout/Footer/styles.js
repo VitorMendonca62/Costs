@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-export const Container = styled.footer`
-  position: relative;
+export const FooterContainer = styled.footer`
+  width: 100%;
   height: 11rem;
-  background-color: #222222;
   padding: 2.5rem 0;
+  background-color: #222222;
+`;
 
-  & > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const List = styled.ul`
