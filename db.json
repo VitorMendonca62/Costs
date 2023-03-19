@@ -7,9 +7,27 @@
       },
       "name": "waddaw",
       "budget": "12121212",
+      "cost": 21211,
+      "services": [
+        {
+          "name": "wdadwa",
+          "cost": 21211,
+          "description": "awdawd",
+          "id": 1
+        }
+      ],
+      "id": 1
+    },
+    {
+      "category": {
+        "id": 2,
+        "name": "Desenvolvimento"
+      },
+      "name": "dwadwad",
+      "budget": "122121",
       "cost": 0,
       "services": [],
-      "id": 1
+      "id": 2
     }
   ],
   "categories": [

@@ -40,7 +40,6 @@ export default function Project() {
   const [budget, setBudget] = useState("");
 
   let idService = 0;
-  let cost = 0;
 
   const { id } = useParams();
 
@@ -102,7 +101,7 @@ export default function Project() {
     idService += lastElementId ? lastElementId + 1 : 1;
 
     const response = new FormData(e.currentTarget);
-    cost = Number(response.get("cost"));
+    const cost = Number(response.get("cost"));
 
     if (project.cost + cost > project.budget) {
       setMessege({

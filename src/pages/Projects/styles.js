@@ -23,6 +23,7 @@ export const Header = styled.div`
   justify-content: space-between;
   width: 100%;
 `;
+
 export const Title = styled.h2`
   font-size: 2.5rem;
   font-weight: bold;
