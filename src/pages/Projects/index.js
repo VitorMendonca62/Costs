@@ -6,7 +6,7 @@ import Messege from "../../components/Messege";
 
 import { Container, ContainerProjects, Header, Main, Title } from "./styles";
 
-import { paths } from "../../contants/paths";
+import { paths } from "../../constants/paths";
 import { useEffect, useState } from "react";
 
 export default function Projects() {

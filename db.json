@@ -28,6 +28,28 @@
       "cost": 0,
       "services": [],
       "id": 2
+    },
+    {
+      "category": {
+        "id": 3,
+        "name": "Design"
+      },
+      "name": "dawdaw",
+      "budget": "12",
+      "cost": 0,
+      "services": [],
+      "id": 3
+    },
+    {
+      "category": {
+        "id": 2,
+        "name": "Desenvolvimento"
+      },
+      "name": "awdawd",
+      "budget": "12122",
+      "cost": 0,
+      "services": [],
+      "id": 4
     }
   ],
   "categories": [

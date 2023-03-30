@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ProjectForm from "../../components/layout/ProjectForm";
 import { Main, Title, Description } from "./styles";
 
-import { paths } from "../../contants/paths";
+import { paths } from "../../constants/paths";
 
 export default function NewProjects() {
   const navigate = useNavigate();

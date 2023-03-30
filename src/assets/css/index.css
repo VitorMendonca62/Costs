@@ -1,8 +1,12 @@
 * {
   font-family: "Roboto", sans-serif !important;
 }
+html {
+  font-size: 62.5%;
+}
 #root {
   min-height: 100vh;
   background-color: #efefef;
   position: relative;
+  font-size: 1.6rem;
 }

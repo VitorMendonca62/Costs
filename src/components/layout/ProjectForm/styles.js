@@ -5,19 +5,19 @@ export const InputArea = styled.div`
   flex-direction: column;
 
   &:nth-child(2) {
-    padding: 2rem 0;
+    padding: 32px 0;
   }
 
   &:nth-child(3) {
-    padding-bottom: 2rem;
+    padding-bottom: 32px;
   }
 
   select {
     border: 1px solid transparent;
     outline: none;
-    padding: 0.75rem;
+    padding: 12px;
     cursor: pointer;
-    border-radius: 1rem;
+    border-radius: 16px;
 
     &:hover {
       border-color: #7b7b7b;
@@ -33,15 +33,15 @@ export const InputArea = styled.div`
 
 export const Label = styled.label`
   font-weight: bold;
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 `;
 
 export const Input = styled.input`
   border: 1px solid transparent;
   outline: none;
-  padding: 0.75rem;
+  padding: 12px;
   cursor: pointer;
-  border-radius: 1rem;
+  border-radius: 16px;
 
   &:hover {
     border-color: #7b7b7b;

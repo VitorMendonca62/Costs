@@ -2,9 +2,15 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  height: 11rem;
-  padding: 2.5rem 0;
+  height: 176px;
+  padding: 40px 0;
   background-color: #222222;
+  position: absolute;
+  bottom: 0;
+
+  @media (max-height: 768px), (max-width: 720px) {
+    position: relative;
+  }
 `;
 
 export const Container = styled.div`
@@ -18,15 +24,15 @@ export const List = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  padding-bottom: 2rem;
+  gap: 24px;
+  padding-bottom: 32px;
 `;
 
 export const Item = styled.li`
   svg {
     fill: #fff;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 24px;
+    height: 24px;
   }
 
   svg:hover {

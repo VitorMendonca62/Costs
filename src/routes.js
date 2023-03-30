@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { paths } from "./contants/paths";
+import { paths } from "./constants/paths";
+
 
 // Componentes do Layout
 import NavBar from "./components/layout/NavBar";

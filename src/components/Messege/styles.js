@@ -5,8 +5,8 @@ export const MessegeContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 5rem;
-  margin-bottom: 2rem;
+  height: 80px;
+  margin-bottom: 32px;
 
   background-color: ${(props) =>
     props.type === "sucess" ? "#d4edda" : "#f8d7da"};

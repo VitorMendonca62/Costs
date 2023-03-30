@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Header, Container, Logo, List, Item } from "./styles";
 
-import { paths } from "../../../contants/paths";
+import { paths } from "../../../constants/paths";
 
 export default function NavBar() {
   const items = [

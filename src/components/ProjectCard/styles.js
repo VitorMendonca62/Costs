@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #fff;
-  padding: 1rem 1rem;
+  padding: 16px;
   border: 1px solid #7a7a7a;
   border-radius: 5px;
 `;
@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const ProjectTitle = styled.h3`
   color: #ffbb33;
   background-color: #222222;
-  padding: 0.5rem 0.75rem;
+  padding: 8px 12px;
   font-size: 1.3rem;
   word-wrap: break-word;
   font-weight: bold;
@@ -18,11 +18,11 @@ export const ProjectTitle = styled.h3`
 
 export const Budget = styled.p`
   color: #7b7b7b;
-  padding: 1.5rem 0;
+  padding: 24px 0;
 `;
 export const Strong = styled.strong`
   font-weight: bold;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 `;
 
 export const Category = styled.p`
@@ -35,15 +35,15 @@ export const Category = styled.p`
       props.colorBall ? props.colorBall : "black"};
     content: "";
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    margin-right: 0.5rem;
+    margin-right: 8px;
   }
 `;
 
 export const Buttons = styled.div`
-  padding-top: 1.5rem;
+  padding-top: 24px;
   display: flex;
   gap: 18%;
 `;
@@ -53,9 +53,9 @@ export const Button = styled.button`
   border: 1px solid #7b7b7b;
   display: flex;
   align-items: center;
-  padding: 0.4rem 0.5rem;
-  gap: 0.4rem;
-  border-radius: 1rem;
+  padding: 0.4rem 8px;
+  gap: 6px;
+  border-radius: 16px;
 
   &:hover {
     background-color: #222;
